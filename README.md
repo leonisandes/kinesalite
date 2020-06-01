@@ -87,7 +87,7 @@ Installation
 With [npm](http://npmjs.org/) do:
 
 ```sh
-$ npm install -g kinesalite
+$ npm install -g kinesalite-v2
 ```
 
 Footnotes
