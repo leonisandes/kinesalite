@@ -1,7 +1,7 @@
 Kinesalite V2
 ----------
 
-[![Build Status](https://secure.travis-ci.org/mhart/kinesalite.png?branch=master)](http://travis-ci.org/mhart/kinesalite)
+[![Docker Pulls](https://img.shields.io/docker/pulls/leonisandes/local-kinesis-v2.svg)](https://hub.docker.com/r/leonisandes/local-kinesis-v2/)
 
 An implementation of [Amazon's Kinesis](http://docs.aws.amazon.com/kinesis/latest/APIReference/),
 focussed<a href="#focussed"><sup>1</sup></a> on correctness and performance, and built on LevelDB
