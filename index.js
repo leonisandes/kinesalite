@@ -7,7 +7,8 @@ var https = require('https'),
     cbor = require('cbor'),
     uuid = require('uuid'),
     validations = require('./validations'),
-    db = require('./db')
+    db = require('./db'),
+    createStream = require('./actions/createStream')
 
 var MAX_REQUEST_BYTES = 7 * 1024 * 1024
 var AMZ_JSON = 'application/x-amz-json-1.1'
@@ -34,6 +35,16 @@ function kinesalite(options) {
     server = https.createServer(options, requestHandler)
   } else {
     server = http.createServer(requestHandler)
+  }
+
+  if(options.initialStreams) {
+    var jsonStreams = JSON.parse(options.initialStreams);
+
+    jsonStreams.forEach(function(stream) {
+      createStream(store, stream, function (err, data) {
+        if (err) console.error("Error when creating initial stream", err)
+      })
+    });
   }
 
   // Ensure we close DB when we're closing the server too
