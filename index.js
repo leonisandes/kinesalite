@@ -38,9 +38,10 @@ function kinesalite(options) {
   }
 
   if(options.initialStreams) {
-    var jsonStreams = JSON.parse(options.initialStreams);
-
+    let rawdata = fs.readFileSync(options.initialStreams);
+    let jsonStreams = JSON.parse(rawdata);
     jsonStreams.forEach(function(stream) {
+      console.log(`Creating StreamName ${stream.StreamName} with ShardCount ${stream.ShardCount}`);
       createStream(store, stream, function (err, data) {
         if (err) console.error("Error when creating initial stream", err)
       })
